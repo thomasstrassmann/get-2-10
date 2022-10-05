@@ -25,18 +25,127 @@ An exciting trick of the game is: After every fifth question, a player can play 
 Sounds simple? Well, it depends on the questions.... 
 
 ## Preparation - UX and UXD
-
-
-
+In terms of user experience, the focus should be on a varied challenge as well as fun. The users must not only score points with broad general knowledge, but also with a sure instinct as to when it makes sense to gamble and when it is better not to take any risks. The game is aimed at a wide audience. Anyone who likes quizzes should love this game.
 
 
 The **UXD - User Experience Design** was declared and described in advance and includes the 5 panels *strategy, scope, structure, skeleton and surface*. 
 
 ### Strategy 
+The game itself, as well as the questions, do not imply opinions, but only ask for knowledge. Therefore, it is intended for each person and is culturally appropriate. 
 
+What makes this game special is the severity and whimsicality of the questions. No jokers help here, only your own brain. There is also a special feature that allows users to gamble for your score after every fifth question. 
+
+To structure the content and make the data retrievable, there are different types, further explained in the scope section. 
+
+What remains is the realization that the interface and the rules of the game should be self-explanatory for the user.
 
 ---
 ### Scope 
+What is feasible? 
+
+The question catalog is stored in an external JavaScript file. The catalog includes an array that contains objects (questions & answers), like so: 
+
+let catalog = [
+{question: “As of 2022, what is the most expensive painting in the world?”,
+
+answers: [“Nu couché - Amedeo Modigliani”, “Les femmes d´Alger - Pablo Picasso”, “Salvator Mundi - Leonardo da Vinci”],
+
+correct : 2
+
+ },
+
+{question: “...?”,
+
+answers: [“...”, “...”, “…”],
+
+correct : 0
+
+ }]
+
+
+This allows the game logic to access the correct data at any time. 
+
+In terms of technology, HTML, CSS and two JavaScript files are used. One contains, as already formulated, the question catalog, the other the functions, in order to increase readability and maintainability of the code, as well as to separate the purposes. 
+
+The required functions will look like this: 
+
+pickQuestion(){
+* starts when DOM is loaded or score has been increased or decreased (new question)
+* let questionIndex = math.random * catalog.length (get a random question out of the catalog)
+* return questionIndex
+* calls displayQuestion(questionIndex)
+}
+
+displayQuestion(questionIndex){
+* get all the required DOM elements and stores it in variables - question, answer1, answer2, answer3
+* take the question from the catalog using the questionIndex and insert the values into the variables	
+
+}
+
+
+checkAnswer(){
+* gets called after click event on one of the three answers
+* checks if the global variable special is set to true
+* compares data-type (1,2 or 3 of HTML file) with the value of the correct-key in the catalog
+* if the two values match, it displays a green effect and calls incrementScore. Unless the special variable equals true, in which case it calls the doubleScore function. 
+* if the two values do not match, it displays a red effect on the answer and calls the decrementScore function. Unless the special variable equals true, in which case it calls the deleteScore function. 
+* setTimeout function for better UX and building up tension.
+
+}
+
+deleteQuestion(){
+* deletes the current questions from the catalog to prevent duplicate questions
+
+}
+
+incrementScore(){
+* gets the current score from the DOM and adds 1
+* calls incrementAttempts and checkScore function
+
+}
+
+decrementScore(){
+* gets the current score from the DOM and subtracts 1
+* calls incrementAttempts and checkScore function
+
+}
+
+doubleScore(){
+* takes the current score from the DOM and multplies it by 2.
+* calls incrementAttempts and checkScore function
+}
+
+deleteScore(){
+* sets back the current score in the DOM.
+* calls incrementAttempts and checkScore function
+}
+
+incrementAttempts(){
+* adds 1 to the attempts displayed on the HTML page after 
+}
+
+checkScore(){
+* gets called after every increment / decrement and doubleScore / deleteScore function, depending on the scenario.
+* checks if score = 10. If so, it displays a congratulation paragraph.
+* calls deleteQuestion function
+* sets the global special variable to false
+* checks if attempts = (5 || 10 || 15...). If so, it calls the riskIt function. Otherwise, it calls pickQuestion.
+
+}
+
+
+riskIt(){
+* asks user if he or she wants to play all or nothing.
+* If answered yes: A global variable named special is set to true and calls pickQuestion.
+* If answered no: pickQuestion gets called and the cycle starts all over.
+}
+
+
+What is not feasible? 
+
+Due to time constraints, there will be limitations on: 
+- the number of questions (not more than 50)!
+- the design. No animations.
 
 
 --- 
