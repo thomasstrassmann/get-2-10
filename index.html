@@ -13,7 +13,9 @@
 <body>
     <main>
         <header>
+            <div id="logo-container">
             <img src="./assets/images/get210logo.png" alt="Get 2 10 Logo" id="logo">
+            </div>
         </header>
 
         <section id="instructions">
@@ -23,11 +25,17 @@
             Each question can earn you one point if the answer is correct. However, if you get the answer wrong, you will lose one point. 
             After every 5 questions you can play all or nothing, if you dare! 
             Can you beat the game in 6 tries? </p>
-
+            <button id="play">Let's do it!</button>
         </section>
 
-        <section id="gamearea">
 
+        <section id="gamearea" aria-label="Click the right answers below according to the question to get a point">
+            <span id="score">Your score: 0</span>
+            <span id="attempts">Your attempts: 0</span>
+            <div id="question"></div>
+            <div id="answer1" data-type="0"></div>
+            <div id="answer2" data-type="1"></div>
+            <div id="answer3" data-type="2"></div>
         </section>
     </main>
     <script src="./assets/js/script.js"></script>
