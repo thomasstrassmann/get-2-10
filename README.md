@@ -19,8 +19,10 @@
 
 
 ## Introduction 
-
-
+This quiz game tests the general knowledge of the users with really hard questions and thus presents a challenge for all passionate guessers. The goal of the game is to reach 10 correct answers with as few attempts as possible. Hence the name, Get 2 10. 
+The user always receives randomly asked questions from any subject area. If he answers correctly, he receives a point. If he answers incorrectly, he loses one. 
+An exciting trick of the game is: After every fifth question, a player can play "all or nothing". If he answers correctly, he receives double the points. If he answers incorrectly, he loses all points and has to start over. So the minimum number of questions a player needs to reach the 10 points is 6 (5x 1 point, 1x 5 points).  
+Sounds simple? Well, it depends on the questions.... 
 
 ## Preparation - UX and UXD
 
