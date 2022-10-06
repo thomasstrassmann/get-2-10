@@ -7,6 +7,8 @@ let startButton = document.getElementById('play');
 let instructions = document.getElementById('instructions');
 
 let gamearea = document.getElementById('gamearea');
+let score = document.getElementById('score');
+let attmepts = document.getElementById('attempts');
 let question = document.getElementById('question');
 let answer1 = document.getElementById('answer1');
 let answer2 = document.getElementById('answer2');
@@ -72,3 +74,6 @@ function checkAnswer(answerGiven){
     }
 }
 
+function incrementScore() {
+
+}

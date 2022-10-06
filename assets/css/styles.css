@@ -66,12 +66,12 @@ h1, h2, #instructions p {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10%;
+    margin: 5%;
 }
 
 #score, #attempts {
     font-weight: bold;
-    margin: 2%;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 #question {
