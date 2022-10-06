@@ -91,6 +91,7 @@ h1, h2, #instructions p {
 #answer1, #answer2, #answer3 {
     border: 2px solid #357785;
     text-align: center;
+    padding: 2% 5%;
 }
 
 #answer1:hover, #answer2:hover, #answer3:hover{
