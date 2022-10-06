@@ -17,7 +17,7 @@ let answer3 = document.getElementById('answer3');
 // Event listeners
 startButton.addEventListener('click', start);
 
-// this code gives all answers an EventListener
+// this code gives all poosible answers an EventListener
 const givenAnswer = document.getElementsByClassName('answerGiven');
 for (let answer of givenAnswer){
     answer.addEventListener('click', captureAnswer);

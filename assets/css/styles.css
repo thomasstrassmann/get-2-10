@@ -32,10 +32,12 @@ h1, h2, #instructions p {
 
 #instructions {
     display: block;
+    width: 100%;
+    height: 60vh;
 } 
 
 #instructions p {
-    margin: 5% auto;
+    margin: 2% auto;
     width: 70%;
 }
 
