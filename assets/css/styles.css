@@ -3,6 +3,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-size: clamp(1rem, 2vw, 2rem);
 }
 
 /* Header specifications */ 
@@ -56,21 +57,43 @@ h1, h2, #instructions p {
     display: none;
     border: 1px solid #129cb8;
     width: 70%;
+    height: 70vh;
     margin: 0 auto;
 }
 
-#score {
-    float: left;
-    font-weight: bold;
-    margin: 2% 5%;
+#results{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10%;
 }
 
-#attempts {
-    float: right;
+#score, #attempts {
     font-weight: bold;
-    margin: 2% 5%;
+    margin: 2%;
+    display: inline-block;
 }
 
 #question {
     text-align: center;
+    clear: both;
+    margin: 5%;
+}
+
+#answers {
+    margin: 5% auto;
+    width: 70%;
+    display: flex; 
+    flex-direction: column;
+    gap: 20px;
+}
+
+#answer1, #answer2, #answer3 {
+    border: 2px solid #357785;
+    text-align: center;
+}
+
+#answer1:hover, #answer2:hover, #answer3:hover{
+    background-color: #129cb8;
+    color:white;
 }
