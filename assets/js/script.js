@@ -8,7 +8,7 @@ let instructions = document.getElementById('instructions');
 
 let gamearea = document.getElementById('gamearea');
 let score = document.getElementById('score');
-let attmepts = document.getElementById('attempts');
+let attempts = document.getElementById('attempts');
 let question = document.getElementById('question');
 let answer1 = document.getElementById('answer1');
 let answer2 = document.getElementById('answer2');
@@ -68,12 +68,28 @@ function captureAnswer(e){
 function checkAnswer(answerGiven){
     let currentQuestionIndex = question.getAttribute("data-index");
     if(special === false){
-        answerGiven == catalog[currentQuestionIndex].correct ? incrementScore() : decrementScore();
+        answerGiven == catalog[currentQuestionIndex].correct ? incrementScore(answerGiven) : decrementScore(answerGiven);
     } else {
-        answerGiven == catalog[currentQuestionIndex].correct ? doubleScore() : deleteScore();
+        answerGiven == catalog[currentQuestionIndex].correct ? doubleScore(answerGiven) : deleteScore(answerGiven);
     }
 }
 
-function incrementScore() {
+function incrementScore(answerGiven){
+    ++score.innerHTML;
+    let correctAnswerId = parseInt(answerGiven)+1;
+    let correctAnswer = `answer${correctAnswerId}`
+    document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
+    incrementAttempts();
+}
 
+function decrementScore(answerGiven){
+    score.innerHTML == 0 ? score.innerHTML = 0 : --score.innerHTML;
+    let falseAnswerId = parseInt(answerGiven)+1;
+    let falseAnswer = `answer${falseAnswerId}`;
+    document.getElementById(falseAnswer).style.backgroundColor = '#ed403b';
+    incrementAttempts();
+}
+
+function incrementAttempts(){
+    ++attempts.innerHTML;
 }
