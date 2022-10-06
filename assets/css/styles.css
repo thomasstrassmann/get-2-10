@@ -54,4 +54,23 @@ h1, h2, #instructions p {
 
 #gamearea {
     display: none;
+    border: 1px solid #129cb8;
+    width: 70%;
+    margin: 0 auto;
+}
+
+#score {
+    float: left;
+    font-weight: bold;
+    margin: 2% 5%;
+}
+
+#attempts {
+    float: right;
+    font-weight: bold;
+    margin: 2% 5%;
+}
+
+#question {
+    text-align: center;
 }
