@@ -12,6 +12,7 @@ let question = document.getElementById('question');
 let answer1 = document.getElementById('answer1');
 let answer2 = document.getElementById('answer2');
 let answer3 = document.getElementById('answer3');
+let options = document.getElementsByClassName('options');
 
 // Event listeners
 startButton.addEventListener('click', start);
@@ -45,9 +46,6 @@ function start(){
 
 function pickQuestion(){
     let questionIndex = Math.floor(Math.random() * catalog.length);
-    for (let answer of givenAnswer){
-        answer.addEventListener('click', captureAnswer);
-    }
     displayQuestion(questionIndex);
 }
 
@@ -57,10 +55,16 @@ function displayQuestion(index){
     answer2.innerHTML = catalog[index].answers[1];
     answer3.innerHTML = catalog[index].answers[2];
     question.setAttribute('data-index',index);
+
+    for (let answer of givenAnswer){
+        answer.addEventListener('click', captureAnswer);
+    }
 }
 
 function captureAnswer(e){
     let finalAnswer = e.target.getAttribute('data-type');
+    e.target.style.backgroundColor = '#129cb8';
+    e.target.style.color = 'white';
     checkAnswer(finalAnswer);
 }
 
@@ -71,6 +75,7 @@ function checkAnswer(answerGiven){
     }
 
     let currentQuestionIndex = question.getAttribute("data-index");
+
     setTimeout(() => {
     if(special === false){
         answerGiven == catalog[currentQuestionIndex].correct ? incrementScore(answerGiven) : decrementScore(answerGiven);

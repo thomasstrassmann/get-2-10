@@ -90,13 +90,16 @@ h1, h2, #instructions p {
     gap: 20px;
 }
 
-#answer1, #answer2, #answer3 {
+.options {
     border: 2px solid #357785;
     text-align: center;
-    padding: 2% 5%;
+    padding: 2% 5%;    
+    /*background-color: white;
+    color:black; */
 }
 
-#answer1:hover, #answer2:hover, #answer3:hover{
+/*
+.options_hover{
     background-color: #129cb8;
     color:white;
-}
+} */
