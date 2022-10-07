@@ -172,6 +172,7 @@ function doubleScore(answerGiven){
     let correctAnswer = `answer${correctAnswerId}`
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
 
+    special = false;
     incrementAttempts();
 }
 
@@ -187,5 +188,6 @@ function deleteScore(answerGiven){
     let rightAnswer = `answer${rightAnswerNum}`;
     document.getElementById(rightAnswer).style.backgroundColor = '#00eb90';
 
+    special = false;
     incrementAttempts();
 }
