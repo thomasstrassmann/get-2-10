@@ -71,11 +71,13 @@ function checkAnswer(answerGiven){
     }
 
     let currentQuestionIndex = question.getAttribute("data-index");
+    setTimeout(() => {
     if(special === false){
         answerGiven == catalog[currentQuestionIndex].correct ? incrementScore(answerGiven) : decrementScore(answerGiven);
     } else {
         answerGiven == catalog[currentQuestionIndex].correct ? doubleScore(answerGiven) : deleteScore(answerGiven);
     }
+    }, "1500");
 }
 
 function incrementScore(answerGiven){
