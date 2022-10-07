@@ -133,5 +133,5 @@ function deleteQuestion(){
     catalog.splice(questionToDelete, 1);
     setTimeout(()=>{
         pickQuestion();
-    }, "1500");   
+    }, "2500");   
 }
