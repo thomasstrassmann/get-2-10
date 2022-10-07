@@ -95,9 +95,16 @@ function incrementScore(answerGiven){
 
 function decrementScore(answerGiven){
     score.innerHTML == 0 ? score.innerHTML = 0 : --score.innerHTML;
+
     let falseAnswerId = parseInt(answerGiven)+1;
     let falseAnswer = `answer${falseAnswerId}`;
     document.getElementById(falseAnswer).style.backgroundColor = '#ed403b';
+
+    let answerIndex = question.getAttribute("data-index");
+    let rightAnswerNum = catalog[answerIndex].correct + 1;
+    let rightAnswer = `answer${rightAnswerNum}`;
+    document.getElementById(rightAnswer).style.backgroundColor = '#00eb90';
+
     incrementAttempts();
 }
 
