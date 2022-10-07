@@ -15,6 +15,8 @@ let answer2 = document.getElementById('answer2');
 let answer3 = document.getElementById('answer3');
 let congratulation = document.getElementById('congratulation');
 let riskContainer = document.getElementById('risk-container');
+let yes = document.getElementById('yes');
+let no = document.getElementById('no');
 
 // Event listeners
 startButton.addEventListener('click', start);
@@ -47,6 +49,9 @@ function start(){
 }
 
 function pickQuestion(){
+    questionContainer.style.display = "block";
+    riskContainer.style.display = "none";
+
     for (let answer of givenAnswer){
         answer.style.backgroundColor = "white";
         answer.style.color = "black";
@@ -147,5 +152,40 @@ function riskIt(){
     setTimeout(()=>{    
         questionContainer.style.display = "none";
         riskContainer.style.display = "block";
-    }, "2500");   
+    }, "2500");
+    
+    yes.addEventListener('click', gamble);
+    no.addEventListener('click', pickQuestion);
+}
+
+function gamble(){
+    questionContainer.style.display = "block";
+    riskContainer.style.display = "none";
+    special = true;
+    pickQuestion();
+}
+
+function doubleScore(answerGiven){
+    score.innerHTML = parseInt(score.innerHTML) * 2;
+
+    let correctAnswerId = parseInt(answerGiven)+1;
+    let correctAnswer = `answer${correctAnswerId}`
+    document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
+
+    incrementAttempts();
+}
+
+function deleteScore(answerGiven){
+    score.innerHTML = 0;
+
+    let falseAnswerId = parseInt(answerGiven)+1;
+    let falseAnswer = `answer${falseAnswerId}`;
+    document.getElementById(falseAnswer).style.backgroundColor = '#ed403b';
+
+    let answerIndex = question.getAttribute("data-index");
+    let rightAnswerNum = catalog[answerIndex].correct + 1;
+    let rightAnswer = `answer${rightAnswerNum}`;
+    document.getElementById(rightAnswer).style.backgroundColor = '#00eb90';
+
+    incrementAttempts();
 }
