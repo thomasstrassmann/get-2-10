@@ -36,7 +36,7 @@ var special = false;
  * resets the score
  */
 instructions.addEventListener("load", function() {
-    instructions.style.display = "block";
+    instructions.style.display = "flex";
     gamearea.style.display = "none";
     // setting the score back
 })
@@ -44,7 +44,7 @@ instructions.addEventListener("load", function() {
 
 function start(){
     instructions.style.display = "none";
-    gamearea.style.display = "block";
+    gamearea.style.display = "flex";
     pickQuestion();
 }
 
