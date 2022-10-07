@@ -59,7 +59,7 @@ h1, h2, #instructions p {
     display: none;
     border: 1px solid #129cb8;
     width: 70%;
-    height: 70vh;
+    height: auto;
     margin: 0 auto;
 }
 
@@ -68,7 +68,7 @@ h1, h2, #instructions p {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10%;
-    margin: 5%;
+    margin: 2%;
 }
 
 #score, #attempts {
@@ -98,4 +98,35 @@ h1, h2, #instructions p {
 
 #congratulation {
     color:#00eb90;
+}
+
+#risk-container {
+    display: none; 
+}
+
+#risk {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#risk-question {
+    flex: 1 0 100%;
+    text-align: center;
+}
+
+#yes, #no {
+    flex: 1 0 25%;
+    border: 1px solid #357785;
+    padding: 2%;
+    margin: 2%;
+    text-align: center;
+}
+
+#yes {
+    background-color: #00eb90;
+}
+
+#no {
+    background-color: #ed403b;
 }

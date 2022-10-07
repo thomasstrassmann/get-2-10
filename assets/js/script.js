@@ -9,10 +9,12 @@ let gamearea = document.getElementById('gamearea');
 let score = document.getElementById('score');
 let attempts = document.getElementById('attempts');
 let question = document.getElementById('question');
+let questionContainer = document.getElementById('question-container');
 let answer1 = document.getElementById('answer1');
 let answer2 = document.getElementById('answer2');
 let answer3 = document.getElementById('answer3');
 let congratulation = document.getElementById('congratulation');
+let riskContainer = document.getElementById('risk-container');
 
 // Event listeners
 startButton.addEventListener('click', start);
@@ -118,9 +120,9 @@ function incrementAttempts(){
 }
 
 function checkScore(){
-    if(score == 10){
+    if(score.innerHTML == 10){
         congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
-    } else if(attempts % 5 == 0){
+    } else if(attempts.innerHTML % 5 == 0){
         riskIt();
     } else {
         deleteQuestion();
@@ -134,4 +136,11 @@ function deleteQuestion(){
     setTimeout(()=>{
         pickQuestion();
     }, "2500");   
+}
+
+function riskIt(){
+    questionContainer.style.display = "none";
+    riskContainer.style.display = "block";
+
+    
 }
