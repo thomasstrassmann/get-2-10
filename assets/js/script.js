@@ -123,9 +123,11 @@ function checkScore(){
     if(score.innerHTML == 10){
         congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
     } else if(attempts.innerHTML % 5 == 0){
+        deleteQuestion();
         riskIt();
     } else {
         deleteQuestion();
+        pickNextQuestion();
     }
     
 }
@@ -133,14 +135,17 @@ function checkScore(){
 function deleteQuestion(){
     let questionToDelete = question.getAttribute('data-index');
     catalog.splice(questionToDelete, 1);
+}
+
+function pickNextQuestion(){
     setTimeout(()=>{
         pickQuestion();
     }, "2500");   
 }
 
 function riskIt(){
-    questionContainer.style.display = "none";
-    riskContainer.style.display = "block";
-
-    
+    setTimeout(()=>{    
+        questionContainer.style.display = "none";
+        riskContainer.style.display = "block";
+    }, "2500");   
 }
