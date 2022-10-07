@@ -65,5 +65,16 @@ export const catalog = [
     {question: "The Netherlands... ",
     answers: ["Have the longest family monarchy in the world", "Have no official language", "Have the oldest national anthem in the world"],
     correct: 2},
-
+    {question: "The Kinkajou (or honey bear) can...",
+    answers: ["Go up to a month without sleep.", "Eat 5 times their body weight.", "Run backwards just as fast as they can run forwards."],
+    correct: 2},
+    {question: "Most sloths die...",
+    answers: ["While going to the toilet", "While breeding", "While sleeping"],
+    correct: 0},
+    {question: "Manatees use...",
+    answers: ["Sea urchins as a weapon", "Flatulences to regulate their buoyancy", "Sea weeds as dental floss"],
+    correct: 1},
+    {question: "The nerve cords in your body...",
+    answers: ["Strung together, reach to the moon and back", "Would fit together in your little toe", "Could hold 5 tons of weight"],
+    correct: 0}
 ]
