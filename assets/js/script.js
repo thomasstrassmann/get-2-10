@@ -12,7 +12,7 @@ let question = document.getElementById('question');
 let answer1 = document.getElementById('answer1');
 let answer2 = document.getElementById('answer2');
 let answer3 = document.getElementById('answer3');
-let options = document.getElementsByClassName('options');
+let congratulation = document.getElementById('congratulation');
 
 // Event listeners
 startButton.addEventListener('click', start);
@@ -103,4 +103,22 @@ function decrementScore(answerGiven){
 
 function incrementAttempts(){
     ++attempts.innerHTML;
+    checkScore();
 }
+
+function checkScore(){
+    if(score == 10){
+        congratulation.innerHTML = <p>Awesome job. You did it! You are a real quiz master, well done!</p>
+    } else {
+        if(attempts % 5 == 0){
+            riskIt();
+        }
+    }
+    deleteQuestion();
+}
+
+function deleteQuestion(){
+    let questionToDelete = question.getAttribute('data-index');
+    catalog.splice(questionToDelete, 1);   
+}
+
