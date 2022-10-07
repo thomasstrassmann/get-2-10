@@ -108,7 +108,7 @@ function incrementAttempts(){
 
 function checkScore(){
     if(score == 10){
-        congratulation.innerHTML = <p>Awesome job. You did it! You are a real quiz master, well done!</p>
+        congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
     } else {
         if(attempts % 5 == 0){
             riskIt();
