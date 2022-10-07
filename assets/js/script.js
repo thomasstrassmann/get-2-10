@@ -5,7 +5,6 @@ import {catalog} from './catalog.js';
 
 let startButton = document.getElementById('play');
 let instructions = document.getElementById('instructions');
-
 let gamearea = document.getElementById('gamearea');
 let score = document.getElementById('score');
 let attempts = document.getElementById('attempts');
@@ -19,9 +18,7 @@ startButton.addEventListener('click', start);
 
 // this code gives all poosible answers an EventListener
 const givenAnswer = document.getElementsByClassName('answerGiven');
-for (let answer of givenAnswer){
-    answer.addEventListener('click', captureAnswer);
-}
+
 
 
 // global variable
@@ -48,7 +45,10 @@ function start(){
 
 function pickQuestion(){
     let questionIndex = Math.floor(Math.random() * catalog.length);
-    return displayQuestion(questionIndex);
+    for (let answer of givenAnswer){
+        answer.addEventListener('click', captureAnswer);
+    }
+    displayQuestion(questionIndex);
 }
 
 function displayQuestion(index){
@@ -66,6 +66,10 @@ function captureAnswer(e){
 
 
 function checkAnswer(answerGiven){
+    for (let answer of givenAnswer){
+        answer.removeEventListener('click', captureAnswer);
+    }
+
     let currentQuestionIndex = question.getAttribute("data-index");
     if(special === false){
         answerGiven == catalog[currentQuestionIndex].correct ? incrementScore(answerGiven) : decrementScore(answerGiven);
