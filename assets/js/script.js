@@ -45,6 +45,10 @@ function start(){
 }
 
 function pickQuestion(){
+    for (let answer of givenAnswer){
+        answer.style.backgroundColor = "white";
+        answer.style.color = "black";
+    }
     let questionIndex = Math.floor(Math.random() * catalog.length);
     displayQuestion(questionIndex);
 }
@@ -116,16 +120,18 @@ function incrementAttempts(){
 function checkScore(){
     if(score == 10){
         congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
+    } else if(attempts % 5 == 0){
+        riskIt();
     } else {
-        if(attempts % 5 == 0){
-            riskIt();
-        }
+        deleteQuestion();
     }
-    deleteQuestion();
+    
 }
 
 function deleteQuestion(){
     let questionToDelete = question.getAttribute('data-index');
-    catalog.splice(questionToDelete, 1);   
+    catalog.splice(questionToDelete, 1);
+    setTimeout(()=>{
+        pickQuestion();
+    }, "1500");   
 }
-
