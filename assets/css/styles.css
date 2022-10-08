@@ -3,15 +3,20 @@
 /* font-family: 'Cardo', serif; (Used for all headings and the quesitons)
 font-family: 'Hind', sans-serif; (Used for everything else)*/
 
-
-
 body {
     margin: 0;
     padding: 0;
-    font-size: clamp(1.5rem, 1vw, 2.5rem);
+    font-size: clamp(1rem, 1vw, 2rem);
     background-color: rgba(18, 156, 184, 0.3);
     box-sizing: border-box;
     font-family: 'Hind', sans-serif;
+}
+
+main {
+    display: flex;
+    width: 100vw;
+    height: 90vh;
+    flex-wrap: wrap;
 }
 
 /* Header specifications */ 
@@ -21,6 +26,7 @@ header {
     height: auto;
     display: flex;
     justify-content: center;
+    flex: 1 0 100%;
 }
 
 #logo-container {
@@ -44,21 +50,21 @@ h1, h2, #question {
 }
 
 h2 {
-    font-size: clamp(1.5rem, 1vw, 2rem);
+    font-size: clamp(1rem, 1vw, 2rem);
 }
 
 #instructions {
+    flex: 1 0 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
     margin: 0 auto;
     height: auto;
 } 
 
 #instructions p {
     margin: 2% auto;
-    width: 70%;
+    width: 90%;
 }
 
 #play {
@@ -81,9 +87,8 @@ h2 {
     flex-direction: column;
     justify-content: space-evenly;
     border: 2px solid #129cb8;
-    width: 90%;
-    height: 75vh;
     margin: 0 auto;
+    flex: 0 1 90%;
 }
 
 #results{
@@ -154,9 +159,6 @@ h2 {
 }
 
 @media (max-width:768px){
-    header {
-        margin-bottom: 5%;
-    }
 
     #logo-container {
         width: 35%;
