@@ -1,11 +1,17 @@
 /* General specifications */ 
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Hind&display=swap');
+/* font-family: 'Cardo', serif; (Used for all headings and the quesitons)
+font-family: 'Hind', sans-serif; (Used for everything else)*/
+
+
 
 body {
     margin: 0;
     padding: 0;
     font-size: clamp(1.5rem, 2vw, 2.5rem);
-    background-color: #B5BFDB;
+    background-color: rgba(18, 156, 184, 0.3);
     box-sizing: border-box;
+    font-family: 'Hind', sans-serif;
 }
 
 /* Header specifications */ 
@@ -29,6 +35,10 @@ header {
 
 h1, h2, #instructions p {
     text-align: center;
+}
+
+h1, h2, #question {
+    font-family: 'Cardo', serif;
 }
 
 #instructions {
@@ -151,6 +161,10 @@ h1, h2, #instructions p {
 
     #logo-container {
         width: 35%;
+    }
+
+    #instructions p {
+        width: 95%;
     }
 
     #gamearea {
