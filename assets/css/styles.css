@@ -35,10 +35,15 @@ header {
 
 h1, h2, #instructions p {
     text-align: center;
+    margin: 1% auto;
 }
 
 h1, h2, #question {
     font-family: 'Cardo', serif;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
 #instructions {
@@ -58,6 +63,7 @@ h1, h2, #question {
 #play {
     background-color: #00eb90;
     color: black;
+    width: 30%;
     border: 1px solid black;
     padding: 2% 5%;
     display: block;
@@ -165,6 +171,10 @@ h1, h2, #question {
 
     #instructions p {
         width: 95%;
+    }
+
+    #play {
+        width: 50%;
     }
 
     #gamearea {
