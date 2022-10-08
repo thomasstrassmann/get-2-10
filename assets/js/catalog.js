@@ -1,5 +1,5 @@
 export const catalog = [
-    {question: "The highest mountain in South America is the... ",
+    /*{question: "The highest mountain in South America is the... ",
     answers: ["Aconcagua", "Ojos del Salado", "Monte Pissis"],
     correct: 0},
     {question: "Tsutomu Yamaguchi became famous for what?",
@@ -33,7 +33,7 @@ export const catalog = [
     answers: ["It is the only year without a documented murder", "It rains in large parts for 8 months at a stretch", "7 times more children were born than in the previous year"],
     correct: 1},
     {question: "In 1945 a german submarine sank because the captain...",
-    answers: ["rammed a fishing boat while drunk", "Operated a wrong valve on the toilet", "Smoked in the ammunition room"],
+    answers: ["Rammed a fishing boat while drunk", "Operated a wrong valve on the toilet", "Smoked in the ammunition room"],
     correct: 1},
     {question: "In 1859...",
     answers: ["One could see auroras in Rome", "There were the most wars in the history of mankind", "Milk was banned as a food in France"],
@@ -49,10 +49,10 @@ export const catalog = [
     correct: 1},
     {question: "Singapore is the only country in the world that...",
     answers: ["Involuntarily became independent", "Did without prisons for decades", "Excluded professional politicians from elections"],
-    correct: 0},
+    correct: 0},*/
     {question: "Why do women traditionally stand to the left of the groom at a wedding ceremony?",
     answers: ["Since the gift table was on the right side and the women had no right to it", "Since many churches had an emergency exit on the left side", "So that the man could defend the woman with his right hand on the sword"],
-    correct: 2},
+    correct: 2},/*
     {question: "In the Middle Ages...",
     answers: ["Green was the color of love", "You shook hands with the left hand", "Shamrocks stood for bad luck"],
     correct: 0},
@@ -148,5 +148,5 @@ export const catalog = [
     correct: 0},
     {question: "One ingredient of dynamite is...", 
     answers: ["Broccoli", "Peanuts", "Potatoes"],
-    correct: 1},
+    correct: 1},*/
 ]
