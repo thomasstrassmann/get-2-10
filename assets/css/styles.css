@@ -3,10 +3,14 @@
 /* font-family: 'Cardo', serif; (Used for all headings and the quesitons)
 font-family: 'Hind', sans-serif; (Used for everything else)*/
 
+html {
+    font-size: 16px;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-size: clamp(1.2rem, 1vw, 2.2rem);
+    font-size: clamp(0.8rem, 1vw, 3rem);
     background-color: black;
     box-sizing: border-box;
     font-family: 'Hind', sans-serif;
@@ -16,8 +20,8 @@ body {
 main {
     display: flex;
     width: 100vw;
-    height: 100%;
-    flex-wrap: wrap;
+    height: 90vh;
+    flex-direction: column;
 }
 
 /* Header specifications */ 
@@ -27,11 +31,11 @@ header {
     height: auto;
     display: flex;
     justify-content: center;
-    flex: 1 0 100%;
+    flex: 1 1 10%;
 }
 
 #logo-container {
-    width: 25%;
+    width: 20%;
 }
 
 #logo {
@@ -50,12 +54,8 @@ h1, h2, #question {
     font-family: 'Cardo', serif;
 }
 
-h2 {
-    font-size: clamp(1.2rem, 1vw, 2.2rem);
-}
-
 #instructions {
-    flex: 1 0 100%;
+    flex: 1 1 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,10 +86,12 @@ h2 {
 #gamearea {
     display: none;
     flex-direction: column;
-    justify-content: space-evenly;
-    border: 2px solid #129cb8;
-    margin: 0 auto;
-    flex: 0 1 90%;
+    border: 2px solid #b81256;
+    margin: 0 5%;
+    flex: 1 1 90%;
+    height: 70%;
+    gap: 1%;
+    padding: 2%;
 }
 
 #results{
@@ -97,11 +99,17 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10%;
+    gap: 5%;
 }
 
 #score, #attempts {
     font-weight: bold;
+}
+
+#question-container {
+    display: flex;
+    flex-direction: column;
+    
 }
 
 #question {
@@ -121,8 +129,7 @@ h2 {
 .options {
     border: 2px solid #357785;
     text-align: center;
-    padding: 2%;
-    font-size: clamp(1.2rem, 1vw, 2.2rem);
+    padding: 1%;
 }
 
 #congratulation {
@@ -161,11 +168,6 @@ h2 {
 }
 
 @media (max-width:768px){
-
-    #logo-container {
-        width: 35%;
-    }
-
     #instructions p {
         width: 95%;
     }
@@ -176,6 +178,10 @@ h2 {
 
     #play {
         width: 50%;
+    }
+
+    #gamearea {
+        height: 80%;
     }
 
     #results {
@@ -190,4 +196,24 @@ h2 {
         text-align: center;
     }
 
+}
+
+@media (orientation: portrait){
+    #gamearea{
+        gap: 10%;
+    }
+
+    /*body {
+        font-size: clamp(0.8rem, 1vw, 2rem);
+    }*/
+
+    #logo-container {
+        width: 50%;
+    }
+}
+
+@media (orientation: landscape){
+    /*body {
+        font-size: clamp(0.8rem, 2vw, 2rem);
+    }*/
 }
