@@ -6,16 +6,17 @@ font-family: 'Hind', sans-serif; (Used for everything else)*/
 body {
     margin: 0;
     padding: 0;
-    font-size: clamp(1rem, 1vw, 2rem);
-    background-color: rgba(18, 156, 184, 0.3);
+    font-size: clamp(1.2rem, 1vw, 2.2rem);
+    background-color: black;
     box-sizing: border-box;
     font-family: 'Hind', sans-serif;
+    color: white;
 }
 
 main {
     display: flex;
     width: 100vw;
-    height: 90vh;
+    height: 100%;
     flex-wrap: wrap;
 }
 
@@ -50,7 +51,7 @@ h1, h2, #question {
 }
 
 h2 {
-    font-size: clamp(1rem, 1vw, 2rem);
+    font-size: clamp(1.2rem, 1vw, 2.2rem);
 }
 
 #instructions {
@@ -106,6 +107,7 @@ h2 {
 #question {
     text-align: center;
     margin: 2%;
+    font-weight: bold;
 }
 
 #answers {
@@ -120,7 +122,7 @@ h2 {
     border: 2px solid #357785;
     text-align: center;
     padding: 2%;
-    font-size: clamp(1rem, 1vw, 2rem);
+    font-size: clamp(1.2rem, 1vw, 2.2rem);
 }
 
 #congratulation {
