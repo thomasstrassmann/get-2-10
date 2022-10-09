@@ -65,6 +65,7 @@ h1, h2, #question {
     margin: 2% auto;
     width: 90%;
     border: 2px solid #b81256;
+    padding: 2%;
 }
 
 #play {
@@ -114,6 +115,7 @@ h1, h2, #question {
     text-align: center;
     font-weight: bold;
     flex: 1 1 10%;
+    margin: 0 5%;
 }
 
 #answers {
@@ -122,7 +124,7 @@ h1, h2, #question {
     display: flex; 
     flex-direction: column;
     flex: 1 1 90%;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .options {
