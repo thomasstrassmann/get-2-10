@@ -151,6 +151,9 @@ function pickNextQuestion(){
 }
 
 function riskIt(){
+    if(score.innerHTML <= 1){
+        pickNextQuestion();
+    } else {
     setTimeout(()=>{    
         questionContainer.style.display = "none";
         riskContainer.style.display = "block";
@@ -158,6 +161,7 @@ function riskIt(){
     
     yes.addEventListener('click', gamble);
     no.addEventListener('click', pickQuestion);
+    }
 }
 
 function gamble(){
