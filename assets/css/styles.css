@@ -64,6 +64,7 @@ h1, h2, #question {
 #instructions p {
     margin: 2% auto;
     width: 90%;
+    border: 2px solid #b81256;
 }
 
 #play {
