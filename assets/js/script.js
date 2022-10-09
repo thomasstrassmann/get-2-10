@@ -49,7 +49,7 @@ function start(){
 }
 
 function pickQuestion(){
-    questionContainer.style.display = "block";
+    questionContainer.style.display = "flex";
     riskContainer.style.display = "none";
 
     for (let answer of givenAnswer){
@@ -101,6 +101,7 @@ function incrementScore(answerGiven){
     let correctAnswerId = parseInt(answerGiven)+1;
     let correctAnswer = `answer${correctAnswerId}`
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
+    document.getElementById(correctAnswer).style.color = 'black';
     incrementAttempts();
 }
 
@@ -110,6 +111,7 @@ function decrementScore(answerGiven){
     let falseAnswerId = parseInt(answerGiven)+1;
     let falseAnswer = `answer${falseAnswerId}`;
     document.getElementById(falseAnswer).style.backgroundColor = '#ed403b';
+    document.getElementById(falseAnswer).style.color = 'black';
 
     let answerIndex = question.getAttribute("data-index");
     let rightAnswerNum = catalog[answerIndex].correct + 1;
@@ -159,7 +161,7 @@ function riskIt(){
 }
 
 function gamble(){
-    questionContainer.style.display = "block";
+    questionContainer.style.display = "flex";
     riskContainer.style.display = "none";
     special = true;
     pickQuestion();
@@ -171,6 +173,7 @@ function doubleScore(answerGiven){
     let correctAnswerId = parseInt(answerGiven)+1;
     let correctAnswer = `answer${correctAnswerId}`
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
+    document.getElementById(correctAnswer).style.color = 'black';
 
     special = false;
     incrementAttempts();
@@ -187,6 +190,7 @@ function deleteScore(answerGiven){
     let rightAnswerNum = catalog[answerIndex].correct + 1;
     let rightAnswer = `answer${rightAnswerNum}`;
     document.getElementById(rightAnswer).style.backgroundColor = '#00eb90';
+    document.getElementById(falseAnswer).style.color = 'black';
 
     special = false;
     incrementAttempts();

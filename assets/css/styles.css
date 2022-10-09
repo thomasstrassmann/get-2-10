@@ -10,7 +10,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-size: clamp(0.8rem, 1vw, 3rem);
+    font-size: 2vw;
     background-color: black;
     box-sizing: border-box;
     font-family: 'Hind', sans-serif;
@@ -20,27 +20,25 @@ body {
 main {
     display: flex;
     width: 100vw;
-    height: 90vh;
+    height: 95vh;
     flex-direction: column;
+    gap: 2vw;
 }
 
 /* Header specifications */ 
 
 header {
     width: 100%;
-    height: auto;
     display: flex;
     justify-content: center;
     flex: 1 1 10%;
 }
 
-#logo-container {
-    width: 20%;
-}
-
 #logo {
     width: 100%;
-    max-width: 300px;
+    max-width: 150px;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Start page specifications */ 
@@ -55,7 +53,7 @@ h1, h2, #question {
 }
 
 #instructions {
-    flex: 1 1 100%;
+    flex: 1 1 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,6 +77,7 @@ h1, h2, #question {
     border-radius: 10px;
     font-weight: bold;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* gamearea specifications */ 
@@ -89,9 +88,6 @@ h1, h2, #question {
     border: 2px solid #b81256;
     margin: 0 5%;
     flex: 1 1 90%;
-    height: 70%;
-    gap: 1%;
-    padding: 2%;
 }
 
 #results{
@@ -99,7 +95,8 @@ h1, h2, #question {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5%;
+    gap: 2%;
+    flex: 1 1 10%;
 }
 
 #score, #attempts {
@@ -109,13 +106,13 @@ h1, h2, #question {
 #question-container {
     display: flex;
     flex-direction: column;
-    
+    flex: 1 1 90%;
 }
 
 #question {
     text-align: center;
-    margin: 2%;
     font-weight: bold;
+    flex: 1 1 10%;
 }
 
 #answers {
@@ -123,21 +120,26 @@ h1, h2, #question {
     width: 90%;
     display: flex; 
     flex-direction: column;
-    gap: 20px;
+    flex: 1 1 90%;
+    justify-content: space-evenly;
 }
 
 .options {
     border: 2px solid #357785;
     text-align: center;
     padding: 1%;
+    cursor: pointer;
 }
 
 #congratulation {
     color:#00eb90;
+    flex: 1 1 100%;
+    text-align: center;
 }
 
 #risk-container {
     display: none; 
+    flex: 1 1 80%;
 }
 
 #risk {
@@ -153,10 +155,12 @@ h1, h2, #question {
 
 #yes, #no {
     flex: 1 0 25%;
-    border: 1px solid #357785;
+    border: 2px solid white;
     padding: 2%;
     margin: 2%;
     text-align: center;
+    color: black;
+    cursor: pointer;
 }
 
 #yes {
@@ -180,10 +184,6 @@ h1, h2, #question {
         width: 50%;
     }
 
-    #gamearea {
-        height: 80%;
-    }
-
     #results {
         width: 100%;
         display: flex;
@@ -192,7 +192,7 @@ h1, h2, #question {
     }
 
     #score-overview, #attempts-overview {
-        flex: 1 0 100%;
+        flex: 1 1 100%;
         text-align: center;
     }
 
@@ -203,17 +203,26 @@ h1, h2, #question {
         gap: 10%;
     }
 
-    /*body {
-        font-size: clamp(0.8rem, 1vw, 2rem);
-    }*/
+    body {
+        font-size: 2vh;
+    }
 
     #logo-container {
-        width: 50%;
+        width: 40%;
+    }
+
+    #answers {
+        gap: 5vh;
+        justify-content: flex-start;
     }
 }
 
 @media (orientation: landscape){
-    /*body {
-        font-size: clamp(0.8rem, 2vw, 2rem);
-    }*/
+    body {
+        font-size: 2vw;
+    }
+
+    #logo-container {
+        width: 15%;
+    }
 }
