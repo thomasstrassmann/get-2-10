@@ -18,36 +18,43 @@ let riskContainer = document.getElementById('risk-container');
 let yes = document.getElementById('yes');
 let no = document.getElementById('no');
 
-// Event listeners
+// Event listeners to start the game
 startButton.addEventListener('click', start);
 
-// this code gives all poosible answers an EventListener
+// this code gives all possible answers an EventListener
 const givenAnswer = document.getElementsByClassName('answerGiven');
 
-
-
-// global variable
+// global variable for all functions to check, whether the user chose to gamble
 var special = false;
 
-
-/** 
- * Eventlistener for page reload
- * It gets the user back to the start page / instructions
- * resets the score
- */
+/*
+ Eventlistener for page reload...
+ - gets the user back to the start page / instructions
+ - hides the gamearea and displays the instructions page 
+*/
 instructions.addEventListener("load", function() {
     instructions.style.display = "flex";
     gamearea.style.display = "none";
-    // setting the score back
 })
 
-
+/**
+ * gets called when the user clicks on start button.
+ * hides the instructions page.
+ * displays the gamearena.
+ * calls the pickQuestion function.
+ */
 function start(){
     instructions.style.display = "none";
     gamearea.style.display = "flex";
     pickQuestion();
 }
 
+/**
+ * displays the question container.
+ * gives all options a white background and black color.
+ * genereates a random index from the catalog.
+ * calls the displayQuestion function with the random index as an argument.
+ */
 function pickQuestion(){
     questionContainer.style.display = "flex";
     riskContainer.style.display = "none";
@@ -60,6 +67,14 @@ function pickQuestion(){
     displayQuestion(questionIndex);
 }
 
+
+/**
+ * gets called everytime by the pickQuestion function.
+ * grabs the question and options from the random object in the catalog.
+ * assigns them to the according places in the HTML file.
+ * stores the question index in the attribute data-index.
+ * creates an event listener for all options.
+ */
 function displayQuestion(index){
     question.innerHTML = catalog[index].question;
     answer1.innerHTML = catalog[index].answers[0];
@@ -72,6 +87,12 @@ function displayQuestion(index){
     }
 }
 
+/**
+ * gets called when a user clicks an option.
+ * captures the answer given by the user by catching the data-type attribute attached to the clicked event.
+ * gives visual feedback with style change (option logged in).
+ * calls checkAnswer function.
+ */
 function captureAnswer(e){
     let finalAnswer = e.target.getAttribute('data-type');
     e.target.style.backgroundColor = '#129cb8';
@@ -79,7 +100,17 @@ function captureAnswer(e){
     checkAnswer(finalAnswer);
 }
 
-
+/**
+ * gets called by captureAnswer and receives the given answer as an argument.
+ * first removes all click events from options to prevent multiple answers.
+ * then grabs the current question index.
+ * delays further action by 1.5 seconds for better UX and tension building.
+ * then checks if the global special variable is set to false. 
+ * if so, it compares the given answer and correct answer from the catalog. 
+ * if they match, the incrementScore function is called with the given answer as an argument.
+ * if they do not match, the decrementScore function is called with the given answer as an argument.
+ * if the special variable is true, it calls doubleScore instead of incrementScore and deleteScore instead of decrementScore.
+ */
 function checkAnswer(answerGiven){
     for (let answer of givenAnswer){
         answer.removeEventListener('click', captureAnswer);
@@ -96,6 +127,13 @@ function checkAnswer(answerGiven){
     }, "1500");
 }
 
+/**
+ * gets called after a right answer is given and special is set to false
+ * increments the score by 1
+ * translates the data-type attribute to the correct answer id
+ * colors the correct answer for visual feedback
+ * calls incrementAttempts function
+ */
 function incrementScore(answerGiven){
     ++score.innerHTML;
     let correctAnswerId = parseInt(answerGiven)+1;
@@ -105,6 +143,16 @@ function incrementScore(answerGiven){
     incrementAttempts();
 }
 
+/**
+ * gets called after a false answer is given and special is set to false.
+ * decrements the score by 1 if the score is not 0.
+ * translates the data-type attribute to the false answer id.
+ * colors the incorrect answer for visual feedback.
+ * gets the current question index.
+ * gets the correct answer from the catalog and increments it by 1 to inject it as a answer id.
+ * the right answer get colored green for visual feedback.
+ * calls incrementAttempts function
+ */
 function decrementScore(answerGiven){
     score.innerHTML == 0 ? score.innerHTML = 0 : --score.innerHTML;
 
