@@ -2,7 +2,7 @@
 ## A quiz for everyone
 
 
-![Overview of Get210](./assets/uxd/screenshot-overview.png")
+![Overview of Get210](./assets/uxd/screenshot-overview.png "Overview of Get210")
 
 [Click here for the full website access](https://thomasstrassmann.github.io/get-2-10/)
 
@@ -19,7 +19,7 @@
 
 
 ## Introduction 
-This quiz game tests the general knowledge of the users with really hard questions and thus presents a challenge for all passionate guessers. The goal of the game is to reach 10 correct answers with as few attempts as possible. Hence the name, Get 2 10. 
+This quiz game tests the general knowledge of the users with really hard questions and thus presents a challenge for all passionate guessers. The goal of the game is to reach 10 correct answers with as few attempts as possible. Hence the name, Get210. 
 The user always receives randomly asked questions from any subject area. If he answers correctly, he receives a point. If he answers incorrectly, he loses one. 
 An exciting trick of the game is: After every fifth question, a player can play "all or nothing". If he answers correctly, he receives double the points. If he answers incorrectly, he loses all points and has to start over. So the minimum number of questions a player needs to reach the 10 points is 6 (5x 1 point, 1x 5 points).  
 Sounds simple? Well, it depends on the questions.... 
@@ -33,7 +33,7 @@ The **UXD - User Experience Design** was declared and described in advance and i
 ### Strategy 
 The game itself, as well as the questions, do not imply opinions, but only ask for knowledge. Therefore, it is intended for each person and is culturally appropriate. 
 
-What makes this game special is the severity and whimsicality of the questions. No jokers help here, only your own brain. There is also a special feature that allows users to gamble for your score after every fifth question. 
+What makes this game special is the difficulty and whimsicality of the questions. No jokers help here, only your own brain. There is also a special feature that allows users to gamble for your score after every fifth question. 
 
 To structure the content and make the data retrievable, there are different types, further explained in the scope section. 
 
@@ -56,7 +56,7 @@ correct : 2
 
 {question: “...?”,
 
-answers: [“...”, “...”, “…”],
+answers: [“...”, “...”, "...”],
 
 correct : 0
 
@@ -90,7 +90,7 @@ pickQuestion(){
 }
 
 displayQuestion(index){
- * gets called everytime by the pickQuestion function with the questionIndex as parameter.
+ * gets called everytime by the pickQuestion function with the questionIndex as an argument.
  * grabs the question and options from the random object in the catalog.
  * assigns them to the according places in the HTML file.
  * stores the question index in the attribute data-index.
@@ -138,7 +138,7 @@ decrementScore(){
  * colors the incorrect answer for visual feedback.
  * gets the current question index.
  * gets the correct answer from the catalog and increments it by 1 to inject it as an answer id.
- * the right answer get colored green for visual feedback.
+ * the right answer gets colored green for visual feedback.
  * calls incrementAttempts function
 
 }
@@ -273,6 +273,7 @@ To test accessibility and SEO, Lighthouse was used.
 Furthermore, the W3C Validator was used to ensure that the HTML and CSS file are valid. No errors exist anymore at this moment. JShint was used to find errors in JavaScript code. In the corrected version there are currently only hints that some techniques can only be used with ES6, so the code is valid.
 
 The game was tested by my wife and me to eliminate bugs in the game logic. 
+No bugs were detected after finishing the project. The only "bug" in the program would be if you need 50 questions or more, because then the game just stops. However, since in a real launch it would have not only 50 questions, but hundreds (if not thousands), this is not a bug that would appear in reality. 
 
 
 ## Deployment 
@@ -285,5 +286,7 @@ This page is hosted via GitHub Pages, which is easily doable via the settings. I
 ## Credits
 
 All code of this quiz game was written by myself and no external sources were used or code was copied. The only credits in this project go to Code Institute's Love Math project, which gave me the idea to use custom atrributes in the HTML file. 
+
+The questions are based on (histroic facts), which are freely available and not subject to copyright. The wrong answers were invented by myself. Therefore it is completely self-created content. 
 
 Stack Overflow was used for bug fixing. 
