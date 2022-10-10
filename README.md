@@ -246,7 +246,7 @@ Google Fonts was used for the typography. The font Cardo is used for headlines a
 
 ## Features
 The following features were a decisive factor during the creation and should benefit the fun of the game: 
-* The game was tested excessively on different devices. Therefore, the display should always be optimal, no matter on which device and whether portrait or landslide mode. 
+* The game was tested excessively on different devices. Therefore, the display should always be optimal, no matter on which device and whether portrait or landscape mode. 
 * The logging in of the questions is displayed graphically and the solution appears only seconds later, in order to build up suspense.
 * There is a gamble feature that allows players to risk their points to earn double the points.
 * The feedback after selected answer shows the user correct and incorrect answers.
@@ -255,8 +255,8 @@ The following features were a decisive factor during the creation and should ben
 
 ### Features for the future 
 The following features would be ideas for further development...
-* Log In area and creation of a global leaderboard.
-* More questions than 50.
+* log in area and creation of a global leaderboard.
+* more questions than 50.
 * better UI Feedback, such as visual representation of a special gamble question.
 
 
