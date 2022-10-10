@@ -1,4 +1,4 @@
-# Get-2-10
+# Get210
 ## A quiz for everyone
 
 
@@ -285,8 +285,10 @@ This page is hosted via GitHub Pages, which is easily doable via the settings. I
 
 ## Credits
 
-All code of this quiz game was written by myself and no external sources were used or code was copied. The only credits in this project go to Code Institute's Love Math project, which gave me the idea to use custom atrributes in the HTML file. 
+All code of this quiz game was written by myself and no external sources were used or code was copied. Also no modifications of foreign source code were used. The only credits in this project go to Code Institute's Love Math project, which gave me the idea to use custom atrributes in the HTML file. 
 
-The questions are based on (histroic facts), which are freely available and not subject to copyright. The wrong answers were invented by myself. Therefore it is completely self-created content. 
+The questions are based on (histroic) facts, which are freely available and not subject to copyright. The wrong answers were invented by myself. Therefore it is completely self-created content. A source that was used more often in the generation of questions is www.onlyfunfacts.com. 
 
 Stack Overflow was used for bug fixing. 
+
+I hope you have a great time with this game and learn some funny facts!!!
