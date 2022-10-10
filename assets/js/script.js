@@ -34,7 +34,7 @@ var special = false;
 instructions.addEventListener("load", function() {
     instructions.style.display = "flex";
     gamearea.style.display = "none";
-})
+});
 
 /**
  * gets called when the user clicks on start button.
@@ -119,9 +119,9 @@ function checkAnswer(answerGiven){
 
     setTimeout(() => {
     if(special === false){
-        answerGiven == catalog[currentQuestionIndex].correct ? incrementScore(answerGiven) : decrementScore(answerGiven);
+        return answerGiven == catalog[currentQuestionIndex].correct ? incrementScore(answerGiven) : decrementScore(answerGiven);
     } else {
-        answerGiven == catalog[currentQuestionIndex].correct ? doubleScore(answerGiven) : deleteScore(answerGiven);
+        return answerGiven == catalog[currentQuestionIndex].correct ? doubleScore(answerGiven) : deleteScore(answerGiven);
     }
     }, "1500");
 }
@@ -134,12 +134,12 @@ function checkAnswer(answerGiven){
  * calls incrementAttempts function.
  */
 function incrementScore(answerGiven){
-    ++score.innerHTML;
     let correctAnswerId = parseInt(answerGiven)+1;
-    let correctAnswer = `answer${correctAnswerId}`
+    let correctAnswer = `answer${correctAnswerId}`;
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
     document.getElementById(correctAnswer).style.color = 'black';
     incrementAttempts();
+    return ++score.innerHTML;
 }
 
 /**
@@ -153,8 +153,6 @@ function incrementScore(answerGiven){
  * calls incrementAttempts function
  */
 function decrementScore(answerGiven){
-    score.innerHTML == 0 ? score.innerHTML = 0 : --score.innerHTML;
-
     let falseAnswerId = parseInt(answerGiven)+1;
     let falseAnswer = `answer${falseAnswerId}`;
     document.getElementById(falseAnswer).style.backgroundColor = '#ed403b';
@@ -164,8 +162,8 @@ function decrementScore(answerGiven){
     let rightAnswerNum = catalog[answerIndex].correct + 1;
     let rightAnswer = `answer${rightAnswerNum}`;
     document.getElementById(rightAnswer).style.backgroundColor = '#00eb90';
-
     incrementAttempts();
+    return score.innerHTML == 0 ? score.innerHTML = 0 : --score.innerHTML;
 }
 
 
@@ -181,7 +179,7 @@ function decrementScore(answerGiven){
     score.innerHTML = parseInt(score.innerHTML) * 2;
 
     let correctAnswerId = parseInt(answerGiven)+1;
-    let correctAnswer = `answer${correctAnswerId}`
+    let correctAnswer = `answer${correctAnswerId}`;
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
     document.getElementById(correctAnswer).style.color = 'black';
 
@@ -235,7 +233,7 @@ function incrementAttempts(){
  */
 function checkScore(){
     if(score.innerHTML >= 10){
-        congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
+        congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>";
     } else if(attempts.innerHTML % 5 == 0){
         deleteQuestion();
         riskIt();
