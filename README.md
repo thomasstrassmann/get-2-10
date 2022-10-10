@@ -4,7 +4,7 @@
 
 ![](./assets")
 
-[Click here for the full website access]()
+[Click here for the full website access](https://thomasstrassmann.github.io/get-2-10/)
 
 
 
@@ -69,75 +69,145 @@ In terms of technology, HTML, CSS and two JavaScript files are used. One contain
 
 The required functions will look like this: 
 
+
+![Function flow](./assets/uxd/functionflow.png "Function flow")
+
+
+start(){
+ * gets called when the user clicks on start button.
+ * hides the instructions page.
+ * displays the gamearena.
+ * calls the pickQuestion function.
+
+}
+
 pickQuestion(){
-* starts when DOM is loaded or score has been increased or decreased (new question)
-* let questionIndex = math.random * catalog.length (get a random question out of the catalog)
-* return questionIndex
-* calls displayQuestion(questionIndex)
-}
-
-displayQuestion(questionIndex){
-* get all the required DOM elements and stores it in variables - question, answer1, answer2, answer3
-* take the question from the catalog using the questionIndex and insert the values into the variables	
+ * displays the question container.
+ * gives all options a white background and black color.
+ * genereates a random index from the catalog.
+ * calls the displayQuestion function with the random index as an argument.
 
 }
 
-
-checkAnswer(){
-* gets called after click event on one of the three answers
-* checks if the global variable special is set to true
-* compares data-type (1,2 or 3 of HTML file) with the value of the correct-key in the catalog
-* if the two values match, it displays a green effect and calls incrementScore. Unless the special variable equals true, in which case it calls the doubleScore function. 
-* if the two values do not match, it displays a red effect on the answer and calls the decrementScore function. Unless the special variable equals true, in which case it calls the deleteScore function. 
-* setTimeout function for better UX and building up tension.
+displayQuestion(index){
+ * gets called everytime by the pickQuestion function with the questionIndex as parameter.
+ * grabs the question and options from the random object in the catalog.
+ * assigns them to the according places in the HTML file.
+ * stores the question index in the attribute data-index.
+ * creates an event listener for all options.
 
 }
 
-deleteQuestion(){
-* deletes the current questions from the catalog to prevent duplicate questions
+captureAnswer(e){
+ * gets called when a user clicks an option.
+ * captures the answer given by the user by catching the data-type attribute attached to the clicked event.
+ * gives visual feedback with style change (option logged in).
+ * calls checkAnswer function.
 
 }
+
+
+
+checkAnswer(answerGiven){
+ * gets called by captureAnswer and receives the given answer as an argument.
+ * first removes all click events from options to prevent multiple answers.
+ * then grabs the current question index.
+ * delays further action by 1.5 seconds for better UX and tension building.
+ * it compares the given answer and correct answer from the catalog. 
+ * checks if the global special variable is set to false. 
+ * if set to false and answers match, the incrementScore function is called with the given answer as an argument.
+ * if they do not match, the decrementScore function is called with the given answer as an argument.
+ * if the special variable is true, it calls doubleScore instead of incrementScore and deleteScore instead of decrementScore.
+
+}
+
 
 incrementScore(){
-* gets the current score from the DOM and adds 1
-* calls incrementAttempts and checkScore function
+ * gets called after a right answer is given and special is set to false.
+ * increments the score by 1.
+ * translates the data-type attribute to the correct answer id.
+ * colors the correct answer for visual feedback.
+ * calls incrementAttempts function.
 
 }
 
 decrementScore(){
-* gets the current score from the DOM and subtracts 1
-* calls incrementAttempts and checkScore function
+ * gets called after a false answer is given and special is set to false.
+ * decrements the score by 1 if the score is not 0.
+ * translates the data-type attribute to the false answer id.
+ * colors the incorrect answer for visual feedback.
+ * gets the current question index.
+ * gets the correct answer from the catalog and increments it by 1 to inject it as an answer id.
+ * the right answer get colored green for visual feedback.
+ * calls incrementAttempts function
 
 }
 
 doubleScore(){
-* takes the current score from the DOM and multplies it by 2.
-* calls incrementAttempts and checkScore function
+ * gets called after a right answer is given and special is set to true.
+ * multiplies the score by 2.
+ * translates the data-type attribute to the correct answer id.
+ * colors the correct answer for visual feedback.
+ * sets special to false again, so that the next question is normal again.
+ * calls incrementAttempts function.
+
 }
 
 deleteScore(){
-* sets back the current score in the DOM.
-* calls incrementAttempts and checkScore function
+ * gets called after a false answer is given and special is set to true.
+ * sets the score to 0.
+ * translates the data-type attribute to the false answer id.
+ * colors the incorrect answer for visual feedback.
+ * gets the current question index.
+ * gets the correct answer from the catalog and increments it by 1 to inject it as an answer id.
+ * the right answer get colored green for visual feedback.
+ * sets special to false again, so that the next question is normal again.
+ * calls incrementAttempts function.
+
 }
 
 incrementAttempts(){
-* adds 1 to the attempts displayed on the HTML page after 
+ * gets called by all increment and decrement functions.
+ * increases the attempts by 1.
+ * calls the checkScore function.
+
 }
 
 checkScore(){
-* gets called after every increment / decrement and doubleScore / deleteScore function, depending on the scenario.
-* checks if score = 10. If so, it displays a congratulation paragraph.
-* calls deleteQuestion function
-* sets the global special variable to false
-* checks if attempts = (5 || 10 || 15...). If so, it calls the riskIt function. Otherwise, it calls pickQuestion.
+ * gets called by the incrementAttempts function.
+ * if the answer is greater or equal to 10, the congratulation is displayed.
+ * if the attempts are divisible by 5, it calls deleteQuestion and riskIt.
+ * else it calls deleteQuestion and pickNextQuestion.
 
 }
 
+deleteQuestion(){
+ * gets called by checkScore.
+ * deletes the current question from the catalog.
+
+}
+
+pickNextQuestion(){
+ * gets called by checkScore or riskIt, if the user has less than 2 points.
+ * calls the pickQuestion function with a delay of 2.5 seconds for better UX.
+
+}
 
 riskIt(){
-* asks user if he or she wants to play all or nothing.
-* If answered yes: A global variable named special is set to true and calls pickQuestion.
-* If answered no: pickQuestion gets called and the cycle starts all over.
+ * gets called by checkScore function if the attempts are devisible by 5.
+ * checks if the score is greater than 1.
+ * if not pickNextQuestion gets called.
+ * if so, the riskContainer displays as block element and the question container disappears after 2.5 seconds.
+ * adds eventlisteneres to the options yes and no.
+
+}
+
+gamble(){
+ * gets called, when the user wants to gamble for double points.
+ * the riskContainer disappears and the questionContainer pops up.
+ * sets the global special variable to true.
+ * calls pickQuestion.
+
 }
 
 
@@ -150,54 +220,61 @@ Due to time constraints, there will be limitations on:
 
 --- 
 ### Structure 
-
-
-
-**Index page** 
-
-
+The website consists only of a dynamic HTML page. The header with the self-designed logo is located at the top and flexibly adapts to the width of the device, as well as the mode (landscape or portrait). 
+When the page is opened or reloaded, the user is presented with the welcome and instructions area. 
+When the user clicks on the start button, the instructions page disappears and the gamearea is displayed instead.
 
 ---
 ### Skeleton 
-To get a visual idea of the already mentioned content, a blueprint or wireframe model was made. There are corresponding wireframe models for each HTML page. For the sake of completeness, it should be mentioned here that the wireframes are not binding and ideas and conceptions of the website may change during the development phase.
+Since the project is only an HTML page, the generation of a wireframe was done relatively quickly. The focus was on the gamearea. 
 
-You can click [here](./assets/wireframes/) to take a look at the wireframes.
+You can click [here](./assets/uxd/wireframe.png) to take a look at the wireframes.
 
 ---
 ### Surface
 
-The color palette considered is composed of an orange tone of the bass from the hero image, with the application of other compound colors. Adobe's Color Wheel was used for this purpose. The colors are also located in the link above. 
+The color palette was selected using Adobe's color wheel. Composite colors of green and red were chosen, which are essential for a quiz game. 
 
-Google Fonts was used for the typography. The font ... is used for important texts and headlines, the font ... is used for descriptive paragraphs. For the icons in the footer, the fontawesome page was a reliable source.
+![Color palette](./assets/uxd/get-2-10-colors.png "Color palette")
 
-A website logo was created with the Adobe Creative Cloud, Adobe Express to be exact. The website logo is also part of the [](./assets/).
+These colors were not only used to design the game interface, but also the logo, which was created using Adobe Express. It represents the name of the game Get210, where the 2 contains a question mark.
 
+![Logo](./assets/images/get210logo.png "Logo")
+
+Google Fonts was used for the typography. The font Cardo is used for headlines and questions, the font Hind is used for everything else.
 
 
 ## Features
-
-
-
-
+The following features were a decisive factor during the creation and should benefit the fun of the game: 
+* The game was tested excessively on different devices. Therefore, the display should always be optimal, no matter on which device and whether portrait or landslide mode. 
+* The logging in of the questions is displayed graphically and the solution appears only seconds later, in order to build up suspense.
+* There is a gamble feature that allows players to risk their points to earn double the points.
+* The feedback after selected answer shows the user correct and incorrect answers.
+![Feedback after answer](./assets/uxd/screenshot-ux.png "Feedback after answer")
 
 
 ### Features for the future 
 The following features would be ideas for further development...
-* 
-* 
-* 
+* Log In area and creation of a global leaderboard
+* More questions than 50
 
 
 
 ## Testing 
 
-The page and its functionality was tested manually. This was done primarily using Chrome DevTools (Lighthouse), as well as the website http://www.responsinator.com/. These were especially helpful to check layout, design and structure. 
-
-Furthermore, the W3C Validator (jigsaw) was used to ensure that all HTML pages and the CSS file are valid. Hardly any errors were found. 
+The page and its functionality was tested manually. This was done primarily using Chrome DevTools (Lighthouse), as well as the website http://www.responsinator.com/.
+The layout was tested in portrait and landscape mode on the following devices: iPhone SE, iPhone XR, iPhone 12 Pro, Pixel 5, Samsung Galaxy S8+, Surface Pro 7, Surface Duo, Galaxy Fold, Samsung Galaxy A51/71, Nest Hub, Nest Hub Max and common monitors. No display errors were detected. If other devices show any, they would have to be improved afterwards. 
 
 To test accessibility and SEO, Lighthouse was used. 
 
-![Lighthouse report](./assets/  "Lighthouse report")
+![Lighthouse report](./assets/uxd/lighthouse-report.png "Lighthouse report")
+
+
+Furthermore, the W3C Validator (jigsaw) was used to ensure that all page are valid. Hardly any errors were found. 
+
+
+
+
 
 
 
