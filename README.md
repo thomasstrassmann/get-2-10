@@ -255,8 +255,9 @@ The following features were a decisive factor during the creation and should ben
 
 ### Features for the future 
 The following features would be ideas for further development...
-* Log In area and creation of a global leaderboard
-* More questions than 50
+* Log In area and creation of a global leaderboard.
+* More questions than 50.
+* better UI Feedback, such as visual representation of a special gamble question.
 
 
 
