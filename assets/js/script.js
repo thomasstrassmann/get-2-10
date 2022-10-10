@@ -68,7 +68,7 @@ function pickQuestion(){
 
 
 /**
- * gets called everytime by the pickQuestion function.
+ * gets called everytime by the pickQuestion function with the questionIndex as parameter.
  * grabs the question and options from the random object in the catalog.
  * assigns them to the according places in the HTML file.
  * stores the question index in the attribute data-index.
