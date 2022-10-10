@@ -2,7 +2,6 @@
 import {catalog} from './catalog.js';
 
 // Basic assignments from DOM Elements to variables
-
 let startButton = document.getElementById('play');
 let instructions = document.getElementById('instructions');
 let gamearea = document.getElementById('gamearea');
@@ -105,9 +104,9 @@ function captureAnswer(e){
  * first removes all click events from options to prevent multiple answers.
  * then grabs the current question index.
  * delays further action by 1.5 seconds for better UX and tension building.
- * then checks if the global special variable is set to false. 
- * if so, it compares the given answer and correct answer from the catalog. 
- * if they match, the incrementScore function is called with the given answer as an argument.
+ * it compares the given answer and correct answer from the catalog. 
+ * checks if the global special variable is set to false. 
+ * if set to false and answers match, the incrementScore function is called with the given answer as an argument.
  * if they do not match, the decrementScore function is called with the given answer as an argument.
  * if the special variable is true, it calls doubleScore instead of incrementScore and deleteScore instead of decrementScore.
  */
@@ -128,11 +127,11 @@ function checkAnswer(answerGiven){
 }
 
 /**
- * gets called after a right answer is given and special is set to false
- * increments the score by 1
- * translates the data-type attribute to the correct answer id
- * colors the correct answer for visual feedback
- * calls incrementAttempts function
+ * gets called after a right answer is given and special is set to false.
+ * increments the score by 1.
+ * translates the data-type attribute to the correct answer id.
+ * colors the correct answer for visual feedback.
+ * calls incrementAttempts function.
  */
 function incrementScore(answerGiven){
     ++score.innerHTML;
@@ -149,7 +148,7 @@ function incrementScore(answerGiven){
  * translates the data-type attribute to the false answer id.
  * colors the incorrect answer for visual feedback.
  * gets the current question index.
- * gets the correct answer from the catalog and increments it by 1 to inject it as a answer id.
+ * gets the correct answer from the catalog and increments it by 1 to inject it as an answer id.
  * the right answer get colored green for visual feedback.
  * calls incrementAttempts function
  */
@@ -169,57 +168,16 @@ function decrementScore(answerGiven){
     incrementAttempts();
 }
 
-function incrementAttempts(){
-    ++attempts.innerHTML;
-    checkScore();
-}
 
-function checkScore(){
-    if(score.innerHTML >= 10){
-        congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
-    } else if(attempts.innerHTML % 5 == 0){
-        deleteQuestion();
-        riskIt();
-    } else {
-        deleteQuestion();
-        pickNextQuestion();
-    }
-    
-}
-
-function deleteQuestion(){
-    let questionToDelete = question.getAttribute('data-index');
-    catalog.splice(questionToDelete, 1);
-}
-
-function pickNextQuestion(){
-    setTimeout(()=>{
-        pickQuestion();
-    }, "2500");   
-}
-
-function riskIt(){
-    if(score.innerHTML <= 1){
-        pickNextQuestion();
-    } else {
-    setTimeout(()=>{    
-        questionContainer.style.display = "none";
-        riskContainer.style.display = "block";
-    }, "2500");
-    
-    yes.addEventListener('click', gamble);
-    no.addEventListener('click', pickQuestion);
-    }
-}
-
-function gamble(){
-    questionContainer.style.display = "flex";
-    riskContainer.style.display = "none";
-    special = true;
-    pickQuestion();
-}
-
-function doubleScore(answerGiven){
+/**
+ * gets called after a right answer is given and special is set to true.
+ * multiplies the score by 2.
+ * translates the data-type attribute to the correct answer id.
+ * colors the correct answer for visual feedback.
+ * sets special to false again, so that the next question is normal again.
+ * calls incrementAttempts function.
+ */
+ function doubleScore(answerGiven){
     score.innerHTML = parseInt(score.innerHTML) * 2;
 
     let correctAnswerId = parseInt(answerGiven)+1;
@@ -231,6 +189,17 @@ function doubleScore(answerGiven){
     incrementAttempts();
 }
 
+/**
+ * gets called after a false answer is given and special is set to true.
+ * sets the score to 0.
+ * translates the data-type attribute to the false answer id.
+ * colors the incorrect answer for visual feedback.
+ * gets the current question index.
+ * gets the correct answer from the catalog and increments it by 1 to inject it as an answer id.
+ * the right answer get colored green for visual feedback.
+ * sets special to false again, so that the next question is normal again.
+ * calls incrementAttempts function
+ */
 function deleteScore(answerGiven){
     score.innerHTML = 0;
 
@@ -246,4 +215,86 @@ function deleteScore(answerGiven){
 
     special = false;
     incrementAttempts();
+}
+
+/**
+ * gets called by all increment and decrement functions.
+ * increases the attempts by 1.
+ * calls the checkScore function.
+ */
+function incrementAttempts(){
+    ++attempts.innerHTML;
+    checkScore();
+}
+
+/**
+ * gets called by the incrementAttempts function.
+ * if the answer is greater or equal to 10, the congratulation is displayed.
+ * if the attempts are divisible by 5, it calls deleteQUestion and riskIt.
+ * else it calls deleteQuestion and pickNextQuestion.
+ */
+function checkScore(){
+    if(score.innerHTML >= 10){
+        congratulation.innerHTML = "<p>Awesome job. You did it! You are a real quiz master, well done!</p>"
+    } else if(attempts.innerHTML % 5 == 0){
+        deleteQuestion();
+        riskIt();
+    } else {
+        deleteQuestion();
+        pickNextQuestion();
+    }
+    
+}
+
+/**
+ * gets called by checkScore.
+ * deletes the current question from the catalog.
+ */
+function deleteQuestion(){
+    let questionToDelete = question.getAttribute('data-index');
+    catalog.splice(questionToDelete, 1);
+}
+
+/**
+ * gets called by checkScore or riskIt, if the user has less than 2 points.
+ * calls the pickQuestion function with a delay of 2.5 seconds for better UX.
+ */
+function pickNextQuestion(){
+    setTimeout(()=>{
+        pickQuestion();
+    }, "2500");   
+}
+
+/**
+ * gets called by checkScore function if the attempts are devisible by 5.
+ * checks if the score is greater than 1.
+ * if not pickNextQuestion gets called.
+ * if so, the riskContainer displays as block element and the question container disappears after 2.5 seconds.
+ * adds eventlisteneres to the options yes and no.
+ */
+function riskIt(){
+    if(score.innerHTML <= 1){
+        pickNextQuestion();
+    } else {
+    setTimeout(()=>{    
+        questionContainer.style.display = "none";
+        riskContainer.style.display = "block";
+    }, "2500");
+    
+    yes.addEventListener('click', gamble);
+    no.addEventListener('click', pickQuestion);
+    }
+}
+
+/**
+ * gets called, when the user wants to gamble for double points.
+ * the riskContainer disappears and the questionContainer pops up.
+ * sets the global special variable to true.
+ * calls pickQuestion.
+ */
+function gamble(){
+    questionContainer.style.display = "flex";
+    riskContainer.style.display = "none";
+    special = true;
+    pickQuestion();
 }
