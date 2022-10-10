@@ -138,8 +138,8 @@ function incrementScore(answerGiven){
     let correctAnswer = `answer${correctAnswerId}`;
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
     document.getElementById(correctAnswer).style.color = 'black';
+    ++score.innerHTML;
     incrementAttempts();
-    return ++score.innerHTML;
 }
 
 /**
@@ -162,8 +162,11 @@ function decrementScore(answerGiven){
     let rightAnswerNum = catalog[answerIndex].correct + 1;
     let rightAnswer = `answer${rightAnswerNum}`;
     document.getElementById(rightAnswer).style.backgroundColor = '#00eb90';
+    if(score.innerHTML == 0){
+        score.innerHTML = 0; 
+    } else {
+        --score.innerHTML;}
     incrementAttempts();
-    return score.innerHTML == 0 ? score.innerHTML = 0 : --score.innerHTML;
 }
 
 
@@ -176,14 +179,13 @@ function decrementScore(answerGiven){
  * calls incrementAttempts function.
  */
  function doubleScore(answerGiven){
-    score.innerHTML = parseInt(score.innerHTML) * 2;
-
     let correctAnswerId = parseInt(answerGiven)+1;
     let correctAnswer = `answer${correctAnswerId}`;
     document.getElementById(correctAnswer).style.backgroundColor = '#00eb90';
     document.getElementById(correctAnswer).style.color = 'black';
 
     special = false;
+    score.innerHTML = parseInt(score.innerHTML) * 2;
     incrementAttempts();
 }
 
@@ -199,8 +201,6 @@ function decrementScore(answerGiven){
  * calls incrementAttempts function
  */
 function deleteScore(answerGiven){
-    score.innerHTML = 0;
-
     let falseAnswerId = parseInt(answerGiven)+1;
     let falseAnswer = `answer${falseAnswerId}`;
     document.getElementById(falseAnswer).style.backgroundColor = '#ed403b';
@@ -212,6 +212,7 @@ function deleteScore(answerGiven){
     document.getElementById(falseAnswer).style.color = 'black';
 
     special = false;
+    score.innerHTML = 0;
     incrementAttempts();
 }
 
