@@ -2,7 +2,7 @@
 ## A quiz for everyone
 
 
-![](./assets")
+![Overview of Get210](./assets/uxd/screenshot-overview.png")
 
 [Click here for the full website access](https://thomasstrassmann.github.io/get-2-10/)
 
@@ -270,30 +270,20 @@ To test accessibility and SEO, Lighthouse was used.
 ![Lighthouse report](./assets/uxd/lighthouse-report.png "Lighthouse report")
 
 
-Furthermore, the W3C Validator (jigsaw) was used to ensure that all page are valid. Hardly any errors were found. 
+Furthermore, the W3C Validator was used to ensure that the HTML and CSS file are valid. No errors exist anymore at this moment. JShint was used to find errors in JavaScript code. In the corrected version there are currently only hints that some techniques can only be used with ES6, so the code is valid.
 
-
-
-
-
+The game was tested by my wife and me to eliminate bugs in the game logic. 
 
 
 ## Deployment 
 
 This page is hosted via GitHub Pages, which is easily doable via the settings. In the future this webpage could also run under a custom url. 
 
-[You can access the website right here]()
+[You can access the website right here](https://thomasstrassmann.github.io/get-2-10/)
 
 
 ## Credits
 
-During the construction of this website some sources and pages were very helpful and without it, it would have been much harder, so thanks to every source down below! 
-A listing of the sources is done here by categorization: 
+All code of this quiz game was written by myself and no external sources were used or code was copied. The only credits in this project go to Code Institute's Love Math project, which gave me the idea to use custom atrributes in the HTML file. 
 
-
-
-**Images:**
-
-
-**Code:** 
-
+Stack Overflow was used for bug fixing. 
